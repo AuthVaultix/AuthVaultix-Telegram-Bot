@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Official Telegram Bot for Authvaultix License and User Administration",
   "main": "bot.js",
+  "license": "Elastic-2.0",
   "type": "commonjs",
   "scripts": {
     "start": "node bot.js"
