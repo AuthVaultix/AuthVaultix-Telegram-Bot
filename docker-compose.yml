@@ -1,0 +1,10 @@
+services:
+  tele-bot:
+    build: .
+    container_name: authvaultix-tele-bot
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      # Persist SQLite database across container restarts and updates
+      - ./bot.db:/app/bot.db

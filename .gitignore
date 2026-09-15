@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Environment and sensitive credentials
+.env
+
+# SQLite local database
+bot.db
+bot.db-journal
+*.db
+*.db-journal
+
+# Legacy database file
+userseller.json
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+*.log
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

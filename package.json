@@ -1,0 +1,15 @@
+{
+  "name": "authvaultix-tele-bot",
+  "version": "1.0.0",
+  "description": "Official Telegram Bot for Authvaultix License and User Administration",
+  "main": "bot.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "dependencies": {
+    "axios": "^1.13.2",
+    "dotenv": "^17.2.3",
+    "node-telegram-bot-api": "^0.66.0"
+  }
+}
