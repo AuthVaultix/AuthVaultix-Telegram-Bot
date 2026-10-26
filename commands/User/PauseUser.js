@@ -24,7 +24,7 @@ module.exports = {
                 const username = reply.text?.trim();
                 if (!username) return bot.sendMessage(chatId," Invalid username.");
 
-                const url = `${BASE_URL}/pause_user.php?sellerkey=${SELLER}&username=${encodeURIComponent(username)}`;
+                const url = `${BASE_URL}?type=pauseuser&sellerkey=${SELLER}&username=${encodeURIComponent(username)}`;
 
                 bot.sendMessage(chatId,` Pausing \`${username}\`...`,{ parse_mode:"Markdown" });
 
@@ -48,7 +48,7 @@ module.exports = {
         // ========= Mode 2  Direct command `/pauseuser user` ==========
         else {
             const username = args[1];
-            const url = `${BASE_URL}/pause_user.php?sellerkey=${SELLER}&username=${encodeURIComponent(username)}`;
+            const url = `${BASE_URL}?type=pauseuser&sellerkey=${SELLER}&username=${encodeURIComponent(username)}`;
 
             bot.sendMessage(chatId,` Pausing \`${username}\`...`,{ parse_mode:"Markdown" });
 

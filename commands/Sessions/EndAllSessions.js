@@ -45,7 +45,7 @@ module.exports = {
             // API CALL
             // ───────────────────────────────────────────────
             try {
-                const url = `${BASE}/sessions_end_all.php?sellerkey=${SELLER}&type=end_all`;
+                const url = `${BASE}?type=endallsessions&sellerkey=${SELLER}`;
                 const r = await axios.get(url);
 
                 if (r.data?.success)

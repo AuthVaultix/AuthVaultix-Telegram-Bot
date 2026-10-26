@@ -51,7 +51,7 @@ module.exports = {
                 // API CALL
                 // ───────────────────────────────────────────────
                 try {
-                    const url = `${BASE}/seller_global_edit.php?sellerkey=${SELLER}&key=${encodeURIComponent(key)}&value=${encodeURIComponent(value)}`;
+                    const url = `${BASE}?type=editvar&sellerkey=${SELLER}&key=${encodeURIComponent(key)}&value=${encodeURIComponent(value)}`;
                     const r = await axios.get(url);
 
                     if (!r.data.success)

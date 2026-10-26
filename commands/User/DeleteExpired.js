@@ -16,7 +16,7 @@ module.exports = {
             return bot.sendMessage(chatId," आपने Seller Key सेट नहीं की!\n /setsellerkey");
 
 
-        const url = `${BASE}/delete_expired_users.php?sellerkey=${SELLER}`;
+        const url = `${BASE}?type=delexpusers&sellerkey=${SELLER}`;
 
         bot.sendMessage(chatId, " Removing expired users...");
 

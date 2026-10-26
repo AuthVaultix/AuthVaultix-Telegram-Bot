@@ -51,7 +51,7 @@ module.exports = {
                     bot.sendMessage(chatId," Updating expiry...",{ parse_mode:"Markdown" });
 
                     try {
-                        const url = `${BASE}/seller_extend_expiry.php?sellerkey=${SELLER}&key=${license}&days=${days}&note=${encodeURIComponent(note)}`;
+                        const url = `${BASE}?type=extendexpiry&sellerkey=${SELLER}&key=${encodeURIComponent(license)}&days=${days}&note=${encodeURIComponent(note)}`;
                         const res = await axios.get(url);
 
                         if (!res.data.success)

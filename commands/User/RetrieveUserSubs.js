@@ -20,7 +20,7 @@ module.exports = {
         bot.sendMessage(chatId, " Fetching subscriptions, please wait...");
 
         try {
-            const res = await axios.get(`${BASE}/retrieve_user_subscriptions.php?sellerkey=${SELLER}`);
+            const res = await axios.get(`${BASE}?type=usersubs&sellerkey=${SELLER}`);
 
             if (!res.data.success)
                 return bot.sendMessage(chatId, ` ${res.data.msg || "Failed to retrieve"}`);

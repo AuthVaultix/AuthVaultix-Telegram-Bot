@@ -47,7 +47,7 @@ module.exports = {
                 { parse_mode:"Markdown" });
 
                 try {
-                    const url = `${BASE}/seller_change_subscription.php?sellerkey=${SELLER}&key=${license}&subscription=${encodeURIComponent(subscription)}`;
+                    const url = `${BASE}?type=changesubli&sellerkey=${SELLER}&key=${encodeURIComponent(license)}&subscription=${encodeURIComponent(subscription)}`;
                     const res = await axios.get(url);
 
                     if (typeof res.data === "object" && !res.data.success)

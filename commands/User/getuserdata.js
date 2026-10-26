@@ -46,7 +46,7 @@ module.exports = {
                 bot.sendMessage(chatId, ` Fetching data for *${username}*...`, { parse_mode: "Markdown" });
 
                 try {
-                    const res = await axios.get(`${BASE}/retrieve_user_data.php?sellerkey=${SELLER}&username=${username}`);
+                    const res = await axios.get(`${BASE}?type=userdata&sellerkey=${SELLER}&username=${encodeURIComponent(username)}`);
 
                     if (!res.data.success)
                         return bot.sendMessage(chatId, ` ${res.data.msg}`);

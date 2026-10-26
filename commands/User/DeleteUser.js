@@ -27,7 +27,7 @@ module.exports = {
 
                 bot.sendMessage(chatId, ` Deleting \`${username}\`...`, { parse_mode: "Markdown" });
 
-                const url = `${BASE}/delete_user.php?sellerkey=${SELLER}&username=${encodeURIComponent(username)}`;
+                const url = `${BASE}?type=deluser&sellerkey=${SELLER}&username=${encodeURIComponent(username)}`;
 
                 try {
                     const res = await axios.get(url);
@@ -51,7 +51,7 @@ module.exports = {
         else {
             const username = args[1];
 
-            const url = `${BASE}/delete_user.php?sellerkey=${SELLER}&username=${encodeURIComponent(username)}`;
+            const url = `${BASE}?type=deluser&sellerkey=${SELLER}&username=${encodeURIComponent(username)}`;
             bot.sendMessage(chatId, ` Deleting \`${username}\`...`, { parse_mode: "Markdown" });
 
             try {

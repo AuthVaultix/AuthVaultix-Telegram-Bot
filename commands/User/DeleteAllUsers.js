@@ -38,7 +38,7 @@ Type \`CONFIRM\` to proceed.`,
 
             bot.sendMessage(chatId," Deleting all users...");
 
-            const url = `${BASE_URL}/delete_all_users.php?sellerkey=${SELLER}`;
+            const url = `${BASE_URL}?type=delallusers&sellerkey=${SELLER}`;
 
             try {
                 const res = await axios.get(url);

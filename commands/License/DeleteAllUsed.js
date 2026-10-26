@@ -9,11 +9,11 @@ module.exports = {
     async run(bot, msg) {
 
         const chatId = msg.chat.id;
-        const SELLER = process.env.SELLERKEY;
+        const SELLER = getSellerKey(chatId);
         const BASE   = process.env.BASE_URL;
 
         if (!SELLER)
-            return bot.sendMessage(chatId," `.env` में SELLERKEY missing है।");
+            return bot.sendMessage(chatId, "It appears you haven't set a Seller Key yet. \n\nTo set one, use the /setsellerkey command.");
 
         //  No input needed  direct confirmation
         bot.sendMessage(
@@ -35,7 +35,7 @@ module.exports = {
             { parse_mode:"Markdown" });
 
             try {
-                const url = `${BASE}/seller_delete_all_used.php?sellerkey=${SELLER}`;
+                const url = `${BASE}?type=deleteallused&sellerkey=${SELLER}`;
                 const res = await axios.get(url);
 
                 if (typeof res.data === "object")

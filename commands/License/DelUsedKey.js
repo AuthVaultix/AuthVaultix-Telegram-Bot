@@ -36,7 +36,7 @@ module.exports = {
             bot.sendMessage(chatId," Deleting used key...",{ parse_mode:"Markdown" });
 
             try {
-                const url = `${BASE}/seller_delete_used.php?sellerkey=${SELLER}&type=delete_used&license=${encodeURIComponent(key)}`;
+                const url = `${BASE}?type=delusedkey&sellerkey=${SELLER}&license=${encodeURIComponent(key)}`;
                 const res = await axios.get(url);
 
                 if (!res.data.success)

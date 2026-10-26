@@ -17,7 +17,7 @@ module.exports = {
 
         bot.sendMessage(chatId, " Fetching usernames from server...");
 
-        const url = `${BASE}/get_usernames.php?sellerkey=${SELLER}&format=text`;
+        const url = `${BASE}?type=verifyuser&sellerkey=${SELLER}&format=text`;
 
         try {
             const res = await axios.get(url);

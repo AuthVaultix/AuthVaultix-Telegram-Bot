@@ -19,7 +19,7 @@ module.exports = {
         bot.sendMessage(chatId, " Checking active sessions...", { parse_mode: "Markdown" });
 
         try {
-            const url = `${BASE}/session_count_active.php?sellerkey=${SELLER}`;
+            const url = `${BASE}?type=activecount&sellerkey=${SELLER}`;
             const r = await axios.get(url);
 
             if (r.data?.success)

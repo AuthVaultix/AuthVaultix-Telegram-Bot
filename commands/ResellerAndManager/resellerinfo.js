@@ -38,7 +38,7 @@ module.exports = {
             // API REQUEST
             // ──────────────────────────────
             try {
-                const url = `${BASE}/seller_reseller_get.php?sellerkey=${SELLER}&username=${user}`;
+                const url = `${BASE}?type=resellerinfo&sellerkey=${SELLER}&username=${encodeURIComponent(user)}`;
                 const res = await axios.get(url);
 
                 if (!res.data.success)

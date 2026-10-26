@@ -59,7 +59,7 @@ module.exports = {
                 // ─────────────────────────────────────────────
                 try {
                     const url =
-                        `${BASE}/seller_delete_subscription.php?sellerkey=${SELLER}&name=${encodeURIComponent(target)}`;
+                        `${BASE}?type=delsub&sellerkey=${SELLER}&name=${encodeURIComponent(target)}`;
 
                     const r = await axios.get(url);
 

@@ -32,7 +32,7 @@ module.exports = {
             const username = res.text.trim();
             bot.sendMessage(chatId, ` Checking **${username}**...`);
 
-            const url = `${BASE}/user_exists.php?sellerkey=${SELLER}&username=${encodeURIComponent(username)}`;
+            const url = `${BASE}?type=userexists&sellerkey=${SELLER}&username=${encodeURIComponent(username)}`;
 
             try {
                 const r = await axios.get(url);

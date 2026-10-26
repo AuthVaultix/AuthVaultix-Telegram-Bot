@@ -59,7 +59,7 @@ module.exports = {
                 // API CALL
                 // ─────────────────────────────────────────────
                 try {
-                    const url = `${BASE}/seller_manager_delete.php?sellerkey=${SELLER}&username=${target}`;
+                    const url = `${BASE}?type=managerdelete&sellerkey=${SELLER}&username=${encodeURIComponent(target)}`;
                     const res = await axios.get(url);
 
                     if (!res.data.success)

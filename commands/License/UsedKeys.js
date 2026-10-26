@@ -20,7 +20,7 @@ module.exports = {
         { parse_mode:"Markdown" });
 
         try {
-            const url = `${BASE}/seller_used_keys.php?sellerkey=${SELLER}`;
+            const url = `${BASE}?type=usedkeys&sellerkey=${SELLER}`;
             const res = await axios.get(url);
 
             if (!res.data.success)

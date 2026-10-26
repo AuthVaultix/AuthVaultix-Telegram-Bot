@@ -50,7 +50,7 @@ async function askNewPassword(msg, bot){
     const SELLER = userState[chatId].SELLER;  //  decrypted key
     const BASE   = process.env.BASE_URL;
 
-    const url = `${BASE}/change_password.php?sellerkey=${SELLER}&username=${encodeURIComponent(username)}&newpass=${encodeURIComponent(newPass)}`;
+    const url = `${BASE}?type=resetpw&sellerkey=${SELLER}&username=${encodeURIComponent(username)}&newpass=${encodeURIComponent(newPass)}`;
 
     try{
         const res = await axios.get(url);

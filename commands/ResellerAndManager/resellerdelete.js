@@ -58,7 +58,7 @@ module.exports = {
                 // API CALL
                 // ───────────────────────────────
                 try {
-                    const url = `${BASE}/seller_reseller_delete.php?sellerkey=${SELLER}&username=${target}`;
+                    const url = `${BASE}?type=resellerdelete&sellerkey=${SELLER}&username=${encodeURIComponent(target)}`;
                     const r = await axios.get(url);
 
                     if (!r.data.success)

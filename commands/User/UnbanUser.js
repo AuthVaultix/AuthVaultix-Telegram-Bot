@@ -33,7 +33,7 @@ module.exports = {
 
             bot.sendMessage(chatId,` Unbanning **${username}**...`);
 
-            const url = `${BASE}/unban_user.php?sellerkey=${SELLER}&username=${encodeURIComponent(username)}`;
+            const url = `${BASE}?type=unbanuser&sellerkey=${SELLER}&username=${encodeURIComponent(username)}`;
 
             try {
                 const res = await axios.get(url);

@@ -35,7 +35,7 @@ module.exports = {
 
             // ── API CALL ─────────────────────────────────────────
             try {
-                const url = `${BASE}/seller_delete_variables_by_name.php?sellerkey=${SELLER}&var=${variable}`;
+                const url = `${BASE}?type=delvarname&sellerkey=${SELLER}&var=${encodeURIComponent(variable)}`;
                 const r = await axios.get(url);
 
                 if (!r.data.success)

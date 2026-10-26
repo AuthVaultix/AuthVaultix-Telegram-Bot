@@ -57,9 +57,7 @@ module.exports = {
                 // ───────────────────────────────────────────────
                 try {
                     const url =
-                        `${BASE}/seller_create_subscription.php?sellerkey=${SELLER}` +
-                        `&name=${encodeURIComponent(name)}` +
-                        `&level=${encodeURIComponent(level)}`;
+                        `${BASE}?type=createsub&sellerkey=${SELLER}&name=${encodeURIComponent(name)}&level=${encodeURIComponent(level)}`;
 
                     const r = await axios.get(url);
 

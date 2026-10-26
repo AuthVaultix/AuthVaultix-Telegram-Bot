@@ -34,7 +34,7 @@ module.exports = {
 
             // ── API CALL ─────────────────────────────────────────
             try {
-                const url = `${BASE}/seller_retrieve_all_user_variables.php?sellerkey=${SELLER}&username=${username}`;
+                const url = `${BASE}?type=getvar&sellerkey=${SELLER}&username=${encodeURIComponent(username)}`;
                 const r = await axios.get(url);
 
                 if (!r.data.success)

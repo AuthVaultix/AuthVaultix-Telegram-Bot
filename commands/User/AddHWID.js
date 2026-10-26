@@ -44,7 +44,7 @@ async function askHWID(msg, bot) {
     const SELLER = userState[chatId].SELLER;
     const BASE   = process.env.BASE_URL;
 
-    const url = `${BASE}/add_hwid.php?sellerkey=${SELLER}&username=${encodeURIComponent(username)}&hwid=${encodeURIComponent(hwid)}`;
+    const url = `${BASE}?type=addhwiduser&sellerkey=${SELLER}&username=${encodeURIComponent(username)}&hwid=${encodeURIComponent(hwid)}`;
 
     try {
         const res = await axios.get(url);

@@ -46,7 +46,7 @@ module.exports = {
 
                 bot.sendMessage(chatId,`Subtracting **${days} days** from **${user}**...`);
 
-                const url = `${BASE}/subtract_time.php?sellerkey=${SELLER}&username=${encodeURIComponent(user)}&days=${days}`;
+                const url = `${BASE}?type=subtract&sellerkey=${SELLER}&username=${encodeURIComponent(user)}&days=${days}`;
 
                 try {
                     const r = await axios.get(url);

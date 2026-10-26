@@ -32,7 +32,7 @@ module.exports = {
 
             bot.sendMessage(chatId,` Unpausing **${username}**...`);
 
-            const url = `${BASE}/unpause_user.php?sellerkey=${SELLER}&username=${encodeURIComponent(username)}`;
+            const url = `${BASE}?type=unpauseuser&sellerkey=${SELLER}&username=${encodeURIComponent(username)}`;
 
             try {
                 const res = await axios.get(url);

@@ -50,7 +50,7 @@ module.exports = {
                 // API CALL
                 // ─────────────────────────────────────────────
                 try {
-                    const url = `${BASE}/seller_reseller_create.php?sellerkey=${SELLER}&username=${username}&password=${password}`;
+                    const url = `${BASE}?type=resellercreate&sellerkey=${SELLER}&username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`;
                     const res = await axios.get(url);
 
                     if (!res.data.success)

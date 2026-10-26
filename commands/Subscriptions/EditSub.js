@@ -66,10 +66,7 @@ module.exports = {
                     // ────────── API REQUEST ──────────
                     try {
                         const url =
-                            `${BASE}/seller_edit_subscription.php?sellerkey=${SELLER}` +
-                            `&old=${encodeURIComponent(oldName)}` +
-                            `&new=${encodeURIComponent(newName)}` +
-                            `&level=${level}`;
+                            `${BASE}?type=editsub&sellerkey=${SELLER}&old=${encodeURIComponent(oldName)}&new=${encodeURIComponent(newName)}&level=${level}`;
 
                         const r = await axios.get(url);
 

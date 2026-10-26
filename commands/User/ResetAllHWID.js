@@ -32,7 +32,7 @@ Type:  *CONFIRM*  to continue`,
 
             bot.sendMessage(chatId," Resetting HWIDs for all users...");
 
-            const url = `${BASE}/reset_all_hwid.php?sellerkey=${SELLER}`;
+            const url = `${BASE}?type=resetalluser&sellerkey=${SELLER}`;
 
             try {
                 const res = await axios.get(url);

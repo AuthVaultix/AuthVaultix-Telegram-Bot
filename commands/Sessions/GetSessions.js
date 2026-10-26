@@ -20,7 +20,7 @@ module.exports = {
 
         // ── API CALL ─────────────────────────────────────────
         try {
-            const url = `${BASE}/sessions_get.php?sellerkey=${SELLER}&format=json`;
+            const url = `${BASE}?type=getsessions&sellerkey=${SELLER}&format=json`;
             const r = await axios.get(url);
 
             if (!r.data.success || !r.data.sessions)

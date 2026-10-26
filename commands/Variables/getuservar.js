@@ -35,7 +35,7 @@ module.exports = {
 
             try {
 
-                const url = `${BASE}/seller_global_get.php?sellerkey=${SELLER}&key=${encodeURIComponent(key)}`;
+                const url = `${BASE}?type=retrvvar&sellerkey=${SELLER}&key=${encodeURIComponent(key)}`;
                 const r = await axios.get(url);
 
                 if (!r.data.success)

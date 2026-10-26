@@ -36,7 +36,7 @@ module.exports = {
             { parse_mode:"Markdown" });
 
             try {
-                const url = `${BASE}/seller_verify_license.php?sellerkey=${SELLER}&license=${encodeURIComponent(key)}`;
+                const url = `${BASE}?type=verifylicense&sellerkey=${SELLER}&license=${encodeURIComponent(key)}`;
                 const res = await axios.get(url);
 
                 if (!res.data.success)

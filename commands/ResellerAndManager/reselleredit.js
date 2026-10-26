@@ -57,7 +57,7 @@ module.exports = {
 
                     // API CALL
                     try {
-                        const url = `${BASE}/seller_reseller_edit.php?sellerkey=${SELLER}&username=${oldUser}&new_username=${newUser}&new_password=${newPass}`;
+                        const url = `${BASE}?type=reselleredit&sellerkey=${SELLER}&username=${encodeURIComponent(oldUser)}&new_username=${encodeURIComponent(newUser)}&new_password=${encodeURIComponent(newPass)}`;
                         const r = await axios.get(url);
 
                         if (!r.data.success)

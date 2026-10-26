@@ -63,7 +63,7 @@ module.exports = {
 
                     // ── API CALL ───────────────────────────
                     try {
-                        const url = `${BASE}/seller_edit_user_variable.php?sellerkey=${SELLER}&username=${username}&var=${variable}&newdata=${encodeURIComponent(newdata)}`;
+                        const url = `${BASE}?type=edituservar&sellerkey=${SELLER}&username=${encodeURIComponent(username)}&var=${encodeURIComponent(variable)}&newdata=${encodeURIComponent(newdata)}`;
                         const r = await axios.get(url);
 
                         if (!r.data.success)

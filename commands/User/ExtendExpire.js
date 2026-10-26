@@ -50,7 +50,7 @@ module.exports = {
                 // API CALL
                 // ────────────────────────────────────────────────
                 try {
-                    const url = `${BASE}/extend_user_expiry.php?sellerkey=${SELLER}&username=${user}&days=${days}`;
+                    const url = `${BASE}?type=extenduserexpiry&sellerkey=${SELLER}&username=${encodeURIComponent(user)}&days=${days}`;
                     const r = await axios.get(url);
 
                     if (!r.data.success)

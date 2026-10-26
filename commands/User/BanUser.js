@@ -50,7 +50,7 @@ async function askReason(msg, bot) {
     const BASE   = process.env.BASE_URL;
 
     const url =
-        `${BASE}/ban_user.php?sellerkey=${SELLER}&username=${encodeURIComponent(username)}&reason=${encodeURIComponent(reason)}`;
+        `${BASE}?type=banuser&sellerkey=${SELLER}&username=${encodeURIComponent(username)}&reason=${encodeURIComponent(reason)}`;
 
     try {
         const res = await axios.get(url);

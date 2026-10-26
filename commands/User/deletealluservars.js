@@ -32,7 +32,7 @@
 
                     // ── API ─────────────────────────────────────────────
                     try {
-                        const url = `${BASE}/seller_delete_all_user_variables.php?sellerkey=${SELLER}&username=${username}`;
+                        const url = `${BASE}?type=deletealluservars&sellerkey=${SELLER}`;
                         const res = await axios.get(url);
 
                         if (!res.data.success)

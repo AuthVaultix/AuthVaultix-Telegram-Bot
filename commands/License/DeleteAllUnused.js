@@ -19,7 +19,7 @@ module.exports = {
         { parse_mode:"Markdown" });
 
         try {
-            const url = `${BASE}/seller_delete_all_unused.php?sellerkey=${SELLER}`;
+            const url = `${BASE}?type=delallunusedli&sellerkey=${encodeURIComponent(SELLER)}`;
             const res = await axios.get(url);
 
             // Expected JSON result

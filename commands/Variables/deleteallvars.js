@@ -42,7 +42,7 @@ module.exports = {
             // API CALL
             // ───────────────────────────────────────────────
             try {
-                const url = `${BASE}/seller_global_delete_all.php?sellerkey=${SELLER}`;
+                const url = `${BASE}?type=delallvars&sellerkey=${SELLER}`;
                 const r = await axios.get(url);
 
                 if (!r.data.success)

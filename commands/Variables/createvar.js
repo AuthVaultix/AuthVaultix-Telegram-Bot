@@ -50,7 +50,7 @@ module.exports = {
                 // API CALL
                 // ────────────────────────────────────────────────
                 try {
-                    const url = `${BASE}/seller_global_create.php?sellerkey=${SELLER}&key=${encodeURIComponent(key)}&value=${encodeURIComponent(value)}`;
+                    const url = `${BASE}?type=addvar&sellerkey=${SELLER}&key=${encodeURIComponent(key)}&value=${encodeURIComponent(value)}`;
                     const res = await axios.get(url);
 
                     if (!res.data.success)

@@ -21,7 +21,7 @@ module.exports = {
         { parse_mode:"Markdown" });
 
         try {
-            const url = `${BASE}/seller_reseller_get_all.php?sellerkey=${SELLER}`;
+            const url = `${BASE}?type=resellerlist&sellerkey=${SELLER}`;
             const r = await axios.get(url);
 
             if (!r.data.success)

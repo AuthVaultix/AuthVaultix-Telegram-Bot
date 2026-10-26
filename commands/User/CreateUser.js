@@ -62,7 +62,7 @@ async function askExpiry(msg,bot){
 
     if(isNaN(expiry)) return bot.sendMessage(chatId," Expiry must be number");
 
-    const url = `${BASE}/create_user.php?sellerkey=${SELLER}&username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}&subscription=${encodeURIComponent(subscription)}&expiry=${expiry}`;
+    const url = `${BASE}?type=adduser&sellerkey=${SELLER}&username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}&subscription=${encodeURIComponent(subscription)}&expiry=${expiry}`;
 
     try{
         const res = await axios.get(url);

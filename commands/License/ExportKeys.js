@@ -40,7 +40,7 @@ module.exports = {
 
             try {
 
-                const url = `${BASE}/seller_export_keys.php?sellerkey=${SELLER}&format=${format}`;
+                const url = `${BASE}?type=exportkeys&sellerkey=${SELLER}&format=${format}`;
                 const res = await axios.get(url,{ responseType:"text" });
 
                 let out = res.data.trim();

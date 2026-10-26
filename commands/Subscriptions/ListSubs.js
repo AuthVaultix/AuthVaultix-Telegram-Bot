@@ -20,7 +20,7 @@ module.exports = {
         { parse_mode:"Markdown" });
 
         try {
-            const url = `${BASE}/seller_get_subscriptions.php?sellerkey=${SELLER}&format=json`;
+            const url = `${BASE}?type=listsubs&sellerkey=${SELLER}&format=json`;
             const r = await axios.get(url);
 
             if (!r.data.success)

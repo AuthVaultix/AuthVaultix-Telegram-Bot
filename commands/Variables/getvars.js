@@ -18,7 +18,7 @@ module.exports = {
         bot.sendMessage(chatId, " Fetching global variables...", { parse_mode: "Markdown" });
 
         try {
-            const url = `${BASE}/seller_global_get_all.php?sellerkey=${SELLER}`;
+            const url = `${BASE}?type=fetchallvars&sellerkey=${SELLER}`;
             const r = await axios.get(url);
 
             if (!r.data.success)

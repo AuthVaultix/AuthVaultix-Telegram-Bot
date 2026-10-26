@@ -51,7 +51,7 @@ module.exports = {
 
                     // ── API CALL ─────────────────────────────────
                     try {
-                        const url = `${BASE}/seller_set_user_variable.php?sellerkey=${SELLER}&username=${user}&var=${key}&newdata=${encodeURIComponent(value)}`;
+                        const url = `${BASE}?type=setvar&sellerkey=${SELLER}&username=${encodeURIComponent(user)}&var=${encodeURIComponent(key)}&newdata=${encodeURIComponent(value)}`;
                         const r = await axios.get(url);
 
                         if (!r.data.success)

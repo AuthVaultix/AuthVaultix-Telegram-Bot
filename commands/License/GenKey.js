@@ -66,7 +66,7 @@ module.exports = {
                     // API CALL
                     // ───────────────────────────────
                     try {
-                        const url = `${BASE}/seller_create_license.php?sellerkey=${SELLER}&type=add&subscription=${sub}&expiry=${expiry}&amount=${amount}&mask=******-******-******&format=text`;
+                        const url = `${BASE}?type=genkey&sellerkey=${SELLER}&subscription=${encodeURIComponent(sub)}&expiry=${expiry}&amount=${amount}&mask=******-******-******&format=text`;
                         const res = await axios.get(url);
 
                         return bot.sendMessage(

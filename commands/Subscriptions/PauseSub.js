@@ -40,7 +40,7 @@ module.exports = {
             // API CALL
             // ───────────────────────────────────────────────
             try {
-                const url = `${BASE}/seller_pause_subscription.php?sellerkey=${SELLER}&subscription=${encodeURIComponent(subName)}`;
+                const url = `${BASE}?type=pausesub&sellerkey=${SELLER}&subscription=${encodeURIComponent(subName)}`;
                 const res = await axios.get(url);
 
                 if (!res.data.success)

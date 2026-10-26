@@ -12,7 +12,7 @@ module.exports = {
         if (!SELLER)
             return bot.sendMessage(chatId,"It appears you haven't set a Seller Key yet. \n\nTo set one, use the  /setsellerkey command.");
 
-        const url = `${BASE}/retrieve_users.php?sellerkey=${SELLER}`;
+        const url = `${BASE}?type=userdata&sellerkey=${SELLER}`;
 
         bot.sendMessage(chatId, " Fetching users...");
 

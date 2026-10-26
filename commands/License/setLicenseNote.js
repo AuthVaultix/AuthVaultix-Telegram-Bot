@@ -50,7 +50,7 @@ module.exports = {
                 { parse_mode:"Markdown" });
 
                 try {
-                    const url = `${BASE}/seller_set_note.php?sellerkey=${SELLER}&license=${encodeURIComponent(key)}&note=${encodeURIComponent(note)}`;
+                    const url = `${BASE}?type=setlicensenote&sellerkey=${SELLER}&license=${encodeURIComponent(key)}&note=${encodeURIComponent(note)}`;
                     const res = await axios.get(url);
 
                     if (typeof res.data === "object" && !res.data.success)

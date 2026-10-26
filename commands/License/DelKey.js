@@ -56,7 +56,7 @@ module.exports = {
                 { parse_mode:"Markdown" });
 
                 try {
-                    const url = `${BASE}/seller_delete_license.php?sellerkey=${SELLER}&type=delete&license=${target}`;
+                    const url = `${BASE}?type=delkey&sellerkey=${SELLER}&license=${encodeURIComponent(target)}`;
                     const res = await axios.get(url);
 
                     if (typeof res.data === "object" && !res.data.success)

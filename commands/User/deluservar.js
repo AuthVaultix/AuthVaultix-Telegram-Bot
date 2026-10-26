@@ -49,7 +49,7 @@ module.exports = {
 
                 // ── API CALL ─────────────────────────────────────
                 try {
-                    const url = `${BASE}/seller_delete_user_variable.php?sellerkey=${SELLER}&username=${username}&var=${variable}`;
+                    const url = `${BASE}?type=deluservar&sellerkey=${SELLER}&username=${encodeURIComponent(username)}&var=${encodeURIComponent(variable)}`;
                     const res = await axios.get(url);
 
                     if (!res.data.success)

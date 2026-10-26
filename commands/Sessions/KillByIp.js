@@ -57,7 +57,7 @@ module.exports = {
                 // API CALL
                 // ────────────────────────────────────────────────
                 try {
-                    const url = `${BASE}/session_kill_ip.php?sellerkey=${SELLER}&type=kill_ip&ip=${targetIP}`;
+                    const url = `${BASE}?type=killsessionsip&sellerkey=${SELLER}&ip=${encodeURIComponent(targetIP)}`;
                     const res = await axios.get(url);
 
                     if (res.data?.success)
