@@ -7,7 +7,15 @@ module.exports = {
 
         const text = `
 <b>Authvaultix Telegram Bot Command Panel</b>
-Manage Licenses • Subscriptions • Variables • Logs • Users • Sessions
+Manage Licenses • Subscriptions • Variables • Users • Sessions • Multi-App
+
+==============================
+APPLICATION MANAGEMENT
+==============================
+/setsellerkey - Add or update your seller key
+/switchapp - Switch active application
+/deleteapp - Remove a saved application
+/myapps - View all registered applications
 
 ==============================
 LICENSE MANAGEMENT
@@ -35,6 +43,28 @@ DELETE LICENSES
 /extendexpiry - Extend license expiry by days
 
 ==============================
+USER MANAGEMENT
+==============================
+/createuser - Create new user
+/deleteuser - Delete a user
+/deleteallusers - Delete all users
+/delexpusers - Delete expired users
+/banuser - Ban user
+/unbanuser - Unban user
+/pauseuser - Pause user
+/unpauseuser - Unpause user
+/changepassword - Change user password
+/changeusername - Change user username
+/addhwid - Add user HWID
+/resethwidall - Reset all user HWIDs
+/getusers - View users list
+/userdata - Get user information
+/userexists - Check if user exists
+/subtime - Subtract user subscription time
+/extenduserexpiry - Extend user subscription time
+/usersubs - Retrieve user subscriptions
+
+==============================
 USER VARIABLES
 ==============================
 /fetchauservars - Fetch all user variables
@@ -53,13 +83,6 @@ GLOBAL VARIABLES
 /fetchallvars - Show all global variables
 /delvar - Delete variable by name
 /delallvars - Delete all global variables
-
-==============================
-LOG MANAGEMENT
-==============================
-/getlogs - Show logs
-/clearlogs - Delete ALL logs (confirmation)
-/clearlogsip - Delete logs by IP
 
 ==============================
 SESSION MANAGEMENT

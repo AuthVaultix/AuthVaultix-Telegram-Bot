@@ -3,8 +3,8 @@
  *  CRONJOB: CLEAN INVALID SELLER KEYS (TELEGRAM BOT)
  * ============================================================
  *
- *  Iterates over all stored seller keys in the SQLite database,
- *  validates each key against the AuthVaultix API:
+ *  Iterates over all stored seller keys across all applications
+ *  in the SQLite database, validates each key against the AuthVaultix API:
  *  https://authvaultix.com/api/getApplicationFromSellerKey.php?sellerkey=<key>
  *
  *  If any key is invalid or revoked, it automatically deletes it
@@ -20,7 +20,7 @@
 
 require("dotenv").config({ path: require("path").resolve(__dirname, "..", ".env") });
 const axios = require("axios");
-const { db, deleteSellerKey } = require("../utils/db");
+const { db, deleteUserApp, deleteSellerKey } = require("../utils/db");
 const { decrypt } = require("../utils/crypto");
 
 const API_ENDPOINT = "https://authvaultix.com/api/getApplicationFromSellerKey.php";
@@ -50,7 +50,23 @@ async function cleanInvalidSellerKeys() {
     const timestamp = new Date().toISOString();
     console.log(`[${timestamp}] 🔍 Starting Seller Key validation cronjob...`);
 
-    const rows = db.prepare("SELECT chat_id, encrypted_key FROM seller_keys").all();
+    let rows = [];
+    let isUserApps = true;
+
+    try {
+        rows = db.prepare("SELECT id, chat_id, app_name, encrypted_key FROM user_apps").all();
+    } catch {
+        isUserApps = false;
+    }
+
+    if (!rows || rows.length === 0) {
+        try {
+            rows = db.prepare("SELECT chat_id, encrypted_key FROM seller_keys").all();
+            isUserApps = false;
+        } catch {
+            rows = [];
+        }
+    }
 
     if (!rows || rows.length === 0) {
         console.log(`ℹ️  No seller keys found in database. Nothing to clean.`);
@@ -64,17 +80,22 @@ async function cleanInvalidSellerKeys() {
     let skippedCount = 0;
 
     for (const row of rows) {
+        const appLabel = row.app_name ? `'${row.app_name}'` : "(Legacy Key)";
         let decryptedKey;
         try {
             decryptedKey = decrypt(row.encrypted_key);
         } catch (decErr) {
-            console.error(`⚠️  Failed to decrypt key for chat_id ${row.chat_id}:`, decErr.message);
+            console.error(`⚠️  Failed to decrypt key for chat_id ${row.chat_id}, app ${appLabel}:`, decErr.message);
             decryptedKey = null;
         }
 
         if (!decryptedKey) {
-            console.log(`🗑️  Deleting un-decryptable / corrupted key for chat_id ${row.chat_id}...`);
-            deleteSellerKey(row.chat_id);
+            console.log(`🗑️  Deleting un-decryptable key for chat_id ${row.chat_id}, app ${appLabel}...`);
+            if (isUserApps && row.app_name) {
+                deleteUserApp(row.chat_id, row.app_name);
+            } else {
+                deleteSellerKey(row.chat_id);
+            }
             deletedCount++;
             continue;
         }
@@ -83,15 +104,22 @@ async function cleanInvalidSellerKeys() {
 
         if (check.valid === true) {
             validCount++;
-            console.log(`✅ [Valid] Chat ID: ${row.chat_id} | App: '${check.appName}'`);
+            console.log(`✅ [Valid] Chat ID: ${row.chat_id} | App: ${appLabel} (Live: ${check.appName})`);
         } else if (check.valid === false) {
-            console.log(`❌ [Invalid] Chat ID: ${row.chat_id} | Reason: ${check.reason} -> Deleting...`);
-            deleteSellerKey(row.chat_id);
+            console.log(`❌ [Invalid] Chat ID: ${row.chat_id} | App: ${appLabel} | Reason: ${check.reason} -> Deleting...`);
+            if (isUserApps && row.app_name) {
+                const delRes = deleteUserApp(row.chat_id, row.app_name);
+                if (delRes.newActiveApp) {
+                    console.log(`   🔄 Chat ID ${row.chat_id} active app switched to: '${delRes.newActiveApp}'`);
+                }
+            } else {
+                deleteSellerKey(row.chat_id);
+            }
             deletedCount++;
         } else {
             // Network issue / timeout: do not delete
             skippedCount++;
-            console.warn(`⚠️  [Skipped due to network error] Chat ID: ${row.chat_id} | Error: ${check.error}`);
+            console.warn(`⚠️  [Skipped due to network error] Chat ID: ${row.chat_id} | App: ${appLabel} | Error: ${check.error}`);
         }
     }
 
